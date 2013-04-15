@@ -1,4 +1,4 @@
-var TaskSystem = angular.module("Tasksystem", ["ngResource"]).
+var TaskSystem = angular.module('Tasksystem', ['ngResource', 'ui.bootstrap']).
     config(function ($routeProvider) {
         $routeProvider.
             when('/', { controller:ListCtrl, templateUrl:'partials/list.html'}).
@@ -7,7 +7,7 @@ var TaskSystem = angular.module("Tasksystem", ["ngResource"]).
     });
 
 
-var ListCtrl = function ($scope, $http) {
+var ListCtrl = function ($scope, $http, $dialog) {
     $http({method:'GET', url:'/tasksystem/api/application'}).
         success(function (data, status, headers, config) {
             $scope.applications = data;
@@ -19,8 +19,36 @@ var ListCtrl = function ($scope, $http) {
         });
 
 
-};
+    var t = '<div class="modal-header">' +
+        '<h1>This is the title</h1>' +
+        '</div>' +
+        '<div class="modal-body">' +
+        '<p>Enter a value to pass to <code>close</code> as the result: <input ng-model="result" /></p>' +
+        '</div>' +
+        '<div class="modal-footer">' +
+        '<button ng-click="close(result)" class="btn btn-primary" >Close</button>' +
+        '</div>';
 
+    $scope.opts = {
+        backdrop:true,
+        keyboard:true,
+        backdropClick:true,
+        //template:t, // OR: templateUrl: 'path/to/view.html',
+        templateUrl:'wizard/partials/search.html',
+        controller:'ListCtrl'
+    };
+
+    $scope.openDialog = function () {
+        var d = $dialog.dialog($scope.opts);
+        d.open().then(function (result) {
+            if (result) {
+                alert('dialog closed with result: ' + result);
+            }
+        });
+    };
+
+
+};
 
 
 var ApplicationCtrl = function ($scope, $http, $location, $routeParams) {
@@ -66,12 +94,12 @@ var ApplicationCtrl = function ($scope, $http, $location, $routeParams) {
     $scope.partybooks = [
         {name:'Det norske Arbeiderpartiet (AP)', value:'AP'},
         {name:'Høyre (H :-)', value:'H'},
-        {name:'Sosial Maxistisk Venstreparti (SV)', value:'SV'},
+        {name:'Sosial Marxistisk Venstreparti (SV)', value:'SV'},
         {name:'Mot alt partiet (R)', value:'RØDT'},
         {name:'Hipsterpartiet (V)', value:'V'},
-        {name:'Mot alt som Rødt er for partiet (FRP)', value:'FRP'},
+        {name:'Mot-alt-som-Rødt-er-for-partiet (FRP)', value:'FRP'},
         {name:'Nasjonalistisk venstreparti (SP)', value:'SP'},
-        {name:'Den religiøse minoritets parti (KRF)', value:'KRF'}
+        {name:'Det religiøse minoritetsparti (KRF)', value:'KRF'}
     ];
 
 

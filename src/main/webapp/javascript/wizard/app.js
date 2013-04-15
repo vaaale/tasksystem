@@ -41,9 +41,9 @@ var ReviewCtrl = function ($scope, $http, $location, $routeParams, CustomerQuery
         console.dir($scope.customer);
 
         var applicant = {
-            name: $scope.customer.realFistName + ' ' + $scope.customer.realLastName,
-            email: $scope.customer.email,
-            accountNumber: $scope.customer.accountNumber
+            name:$scope.customer.realFistName + ' ' + $scope.customer.realLastName,
+            email:$scope.customer.email,
+            accountNumber:$scope.customer.accountNumber
         };
         console.log('Saving applicant');
         console.dir(applicant);
@@ -58,9 +58,13 @@ var SearchCtrl = function ($scope, $http, $location, $routeParams, CustomerQuery
     console.log("searching for " + $routeParams.query);
     $http({method:'GET', url:'/tasksystem/api/customer/' + $routeParams.query}).
         success(function (data, status, headers, config) {
-            $scope.customers = data;
-            CustomerQuery.setQuery($routeParams.query);
-            CustomerQuery.setCustomers(data);
+            if (status == 204) {
+                $scope.customers = [{realLastName:'no data'}];
+            } else {
+                $scope.customers = data;
+                CustomerQuery.setQuery($routeParams.query);
+                CustomerQuery.setCustomers(data);
+            }
         }).
         error(function (data, status, headers, config) {
             // called asynchronously if an error occurs

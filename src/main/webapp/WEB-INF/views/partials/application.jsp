@@ -1,9 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
-<div>
-    <h1>This is application.jsp</h1>
+<div class="container">
 
-    <div class="container">
+    <div class="hero-unit">
+
+        <h3>Søknadsdsskjema</h3>
+
         <form ng-submit="updateApplication()">
             <div class="row">
                 <div class="span4"><b>AppId: {{app.id}}<br/></b></div>
@@ -34,7 +37,8 @@
                     <select ng-model="app.memberships" ng-options="obj.value as obj.name for obj in partybooks"></select><br>
                 </div>
             </div>
-            <input class="btn-primary" type="submit" value="Lagre">
+
+            <button type="submit" class="btn btn-primary"><i class="icon-upload icon-white"></i> Lagre</button>
         </form>
     </div>
 

@@ -1,5 +1,6 @@
 package org.inmeta.tasksystem.controller;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.inmeta.common.action.ResultMapper;
 import org.inmeta.tasksystem.application.CustomerTransaction;
 import org.inmeta.tasksystem.application.input.PersonQueryBuilder;
@@ -22,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class CustomerController {
-     @Autowired
-     private CustomerTransaction customerTransaction;
+    @Autowired
+    private CustomerTransaction customerTransaction;
 
     @RequestMapping(value = "/api/customer/{name}", method = RequestMethod.GET)
     public ResponseEntity<?> search(@PathVariable("name") final String name) {
@@ -31,7 +32,13 @@ public class CustomerController {
                 new PersonQueryBuilder(name),
                 new PersonCustomerDtoMapper());
 
-        return new ResponseEntity<Object>(resultMapper.getResultList(), HttpStatus.OK);
+        if (CollectionUtils.isNotEmpty(resultMapper.getResultList())) {
+
+            return new ResponseEntity<Object>(resultMapper.getResultList(), HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
     }
 
 }
