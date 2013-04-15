@@ -6,22 +6,8 @@ var TaskSystem = angular.module("Tasksystem", ["ngResource"]).
             otherwise({ redirectTo:'/'})
     });
 
-TaskSystem.factory('ApplicationModel', function ($rootScope) {
-    var model = {
-        appId:''
-    };
 
-    return {
-        setAppId:function (appId) {
-            model.appId = appId;
-        },
-        getAppId:function () {
-            return model.appId;
-        }
-    };
-});
-
-var ListCtrl = function ($scope, $http, $location, ApplicationModel) {
+var ListCtrl = function ($scope, $http) {
     $http({method:'GET', url:'/tasksystem/api/application'}).
         success(function (data, status, headers, config) {
             $scope.applications = data;
@@ -35,7 +21,9 @@ var ListCtrl = function ($scope, $http, $location, ApplicationModel) {
 
 };
 
-var ApplicationCtrl = function ($scope, $http, $location, $routeParams, ApplicationModel) {
+
+
+var ApplicationCtrl = function ($scope, $http, $location, $routeParams) {
     var appId = $routeParams.id;
 
     console.log('AppId: ' + appId);

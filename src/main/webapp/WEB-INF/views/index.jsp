@@ -6,6 +6,7 @@
     <title>Tasksystem</title>
     <script type="text/javascript" src="/tasksystem/javascript/angular/angular.js"></script>
     <script type="text/javascript" src="/tasksystem/javascript/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="/tasksystem/javascript/angular/ui/ui-bootstrap-0.2.0.min.js"></script>
     <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="/tasksystem/javascript/application/app.js"></script>
 
