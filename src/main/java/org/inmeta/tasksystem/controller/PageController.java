@@ -16,13 +16,30 @@ public class PageController {
 		return new ModelAndView("index");
 	}
 
+    /*
 	@RequestMapping(value="/index.html")
 	public ModelAndView index(HttpServletResponse response) throws IOException{
 		return new ModelAndView("index");
 	}
+	*/
+
+    @RequestMapping(value="/{page}.html")
+   	public ModelAndView rootPages(@PathVariable("page") final String page) throws IOException{
+   		return new ModelAndView(page);
+   	}
+
+    @RequestMapping(value="/wizard/{page}.html")
+   	public ModelAndView wizardPages(@PathVariable("page") final String page) throws IOException{
+   		return new ModelAndView("wizard/" + page);
+   	}
 
 	@RequestMapping(value="/partials/{page}.html")
 	public ModelAndView partial(@PathVariable("page") final String page) throws IOException{
 		return new ModelAndView("partials/" + page);
+	}
+
+	@RequestMapping(value="/wizard/partials/{page}.html")
+	public ModelAndView wizardPartial(@PathVariable("page") final String page) throws IOException{
+		return new ModelAndView("wizard/partials/" + page);
 	}
 }

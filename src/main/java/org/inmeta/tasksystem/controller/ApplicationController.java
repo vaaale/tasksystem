@@ -41,8 +41,8 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/api/application", method = RequestMethod.PUT)
-    public ResponseEntity<?> create(@RequestBody final ApplicantDto application) {
-        ResultMapper<FundingApplication, ?> result = tasksystemTransaction.create(new CreateApplication(application),
+    public ResponseEntity<?> create(@RequestBody final ApplicantDto applicant) {
+        ResultMapper<FundingApplication, ?> result = tasksystemTransaction.create(new CreateApplication(applicant),
                 new FundingApplicationDtoMapper());
         return new ResponseEntity<Object>(result.getSingleResult(), HttpStatus.OK);
     }

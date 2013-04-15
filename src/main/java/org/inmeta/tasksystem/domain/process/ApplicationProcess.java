@@ -31,7 +31,8 @@ public class ApplicationProcess extends AbstractStateMachine<ApplicationStates, 
         final State<ApplicationStates> closedState = addState(ApplicationStates.CLOSED);
         final State<ApplicationStates> rejectedState = addState(ApplicationStates.REJECTED);
 
-        addTransition(idleState, newState, ApplicationEvents.CREATE);
+        addTransition(idleState, newState, ApplicationEvents.CREATE)
+                .addHandler(Handlers.CREATE);
 
         addTransition(newState, openState, ApplicationEvents.UPDATE_APPLICATION)
                 .addHandler(Handlers.UPDATE_APPLICATION);
