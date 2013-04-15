@@ -63,4 +63,16 @@ var ApplicationCtrl = function ($scope, $http, $location, $routeParams) {
             // or server returns response with an error status.
         });
 
+    $scope.partybooks = [
+        {name:'Det norske Arbeiderpartiet (AP)', value:'AP'},
+        {name:'Høyre (H :-)', value:'H'},
+        {name:'Sosial Maxistisk Venstreparti (SV)', value:'SV'},
+        {name:'Mot alt partiet (R)', value:'RØDT'},
+        {name:'Hipsterpartiet (V)', value:'V'},
+        {name:'Mot alt som Rødt er for partiet (FRP)', value:'FRP'},
+        {name:'Nasjonalistisk venstreparti (SP)', value:'SP'},
+        {name:'Den religiøse minoritets parti (KRF)', value:'KRF'}
+    ];
+
+
 };
