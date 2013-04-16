@@ -1,11 +1,18 @@
 var CustomerWizard = angular.module("Wizard", ["ngResource"]).
     config(function ($routeProvider) {
         $routeProvider.
-            when('/', { controller:WizardCtrl, templateUrl:'partials/search.html'}).
-            when('/step1/:query', {controller:SearchCtrl, templateUrl:'partials/select.html'}).
-            when('/step2/:id', {controller:ReviewCtrl, templateUrl:'partials/review.html'}).
+            when('/', { controller:WizardCtrl, templateUrl:'wizard/partials/search.html'}).
+            when('/step1/:query', {controller:SearchCtrl, templateUrl:'wizard/partials/select.html'}).
+            when('/step2/:id', {controller:ReviewCtrl, templateUrl:'wizard/partials/review.html'}).
             otherwise({ redirectTo:'/'})
     });
+
+angular.element(document).ready(function () {
+    console.log("Bøø");
+    console.dir(document.getElementById('wizard'));
+    angular.bootstrap(document.getElementById('wizard'), ["Wizard"]);
+    $scope.haha = "haha";
+});
 
 
 CustomerWizard.factory('CustomerQuery', function ($rootScope) {
@@ -58,9 +65,13 @@ var SearchCtrl = function ($scope, $http, $location, $routeParams, CustomerQuery
     console.log("searching for " + $routeParams.query);
     $http({method:'GET', url:'/tasksystem/api/customer/' + $routeParams.query}).
         success(function (data, status, headers, config) {
+            console.log('status: ' + status);
             if (status == 204) {
-                $scope.customers = [{realLastName:'no data'}];
+                $scope.customers = [
+                    {realLastName:'no data'}
+                ];
             } else {
+                console.log('status: ' + status);
                 $scope.customers = data;
                 CustomerQuery.setQuery($routeParams.query);
                 CustomerQuery.setCustomers(data);

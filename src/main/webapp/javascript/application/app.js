@@ -18,17 +18,6 @@ var ListCtrl = function ($scope, $http, $dialog) {
             // or server returns response with an error status.
         });
 
-
-    var t = '<div class="modal-header">' +
-        '<h1>This is the title</h1>' +
-        '</div>' +
-        '<div class="modal-body">' +
-        '<p>Enter a value to pass to <code>close</code> as the result: <input ng-model="result" /></p>' +
-        '</div>' +
-        '<div class="modal-footer">' +
-        '<button ng-click="close(result)" class="btn btn-primary" >Close</button>' +
-        '</div>';
-
     $scope.opts = {
         backdrop:true,
         keyboard:true,

@@ -49,6 +49,20 @@
 
 <script type="text/javascript" src="/tasksystem/javascript/angular/ui/ui-bootstrap-0.2.0.min.js"></script>
 <script type="text/javascript" src="/tasksystem/javascript/application/app.js"></script>
+<script type="text/javascript" src="/tasksystem/javascript/wizard/app.js"></script>
+
+<div style="display: none;">
+
+    <div id="wizard">
+        <h1>wiz</h1>
+
+        <div class="container">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+
 
 </body>
 </html>
