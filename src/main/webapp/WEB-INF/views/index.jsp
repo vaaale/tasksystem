@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!doctype html>
 
-<html ng-app="Tasksystem">
+
+<html>
 <head>
     <title>TITS</title>
     <script type="text/javascript" src="/tasksystem/javascript/angular/angular.js"></script>
     <script type="text/javascript" src="/tasksystem/javascript/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="/tasksystem/javascript/angular/ui/ui-bootstrap-0.2.0.min.js"></script>
+    <script type="text/javascript" src="/tasksystem/javascript/application/app.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
@@ -35,10 +38,8 @@
     </div>
 </div>
 
-<div id="wrap">
-    <div id="container">
-        <div ng-view></div>
-    </div>
+<div id="tasksystem" class="container">
+    <div ng-view></div>
 </div>
 
 <div id="footer">
@@ -47,22 +48,13 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/tasksystem/javascript/angular/ui/ui-bootstrap-0.2.0.min.js"></script>
-<script type="text/javascript" src="/tasksystem/javascript/application/app.js"></script>
-<script type="text/javascript" src="/tasksystem/javascript/wizard/app.js"></script>
+<div id="wizard" style="border: 1px solid red; ">
+    <h1>wizard-div</h1>
 
-<div style="display: none;">
-
-    <div id="wizard">
-        <h1>wiz</h1>
-
-        <div class="container">
-            <div ng-view></div>
-        </div>
+    <div class="container">
+        <div ng-view></div>
     </div>
 </div>
-
-
 
 </body>
 </html>

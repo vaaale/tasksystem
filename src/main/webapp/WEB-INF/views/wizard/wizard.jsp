@@ -2,6 +2,8 @@
 
 <div id="wizard">
 
+    <h1>dette er wizard-siden, denne trenger vi ikke...</h1>
+
     <div class="container">
         <div ng-view></div>
     </div>
