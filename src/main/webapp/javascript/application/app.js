@@ -52,6 +52,7 @@ var ListCtrl = function ($scope, $http, $dialog) {
     };
 
     $scope.openDialog = function () {
+        /*
         var d = $dialog.dialog($scope.opts);
         d.open()
             .then(function (result) {
@@ -59,6 +60,9 @@ var ListCtrl = function ($scope, $http, $dialog) {
                     alert('dialog closed with result: ' + result);
                 }
             });
+            */
+
+        jQuery("#wizard").dialog().openDialog();
     };
 };
 

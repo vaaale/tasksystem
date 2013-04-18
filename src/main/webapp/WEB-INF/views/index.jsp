@@ -10,6 +10,11 @@
     <script type="text/javascript" src="/tasksystem/javascript/angular/ui/ui-bootstrap-0.2.0.min.js"></script>
     <script type="text/javascript" src="/tasksystem/javascript/application/app.js"></script>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
+
+
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
@@ -48,7 +53,11 @@
     </div>
 </div>
 
-<div id="wizard" style="border: 1px solid red; ">
+<div id="alex">
+    <h1>Dette er ALEX!</h1>
+</div>
+
+<div id="wizard" style="border: 1px solid red; display: none">
     <h1>wizard-div</h1>
 
     <div class="container">
